@@ -1,7 +1,7 @@
 paths:
   /applications/{application_uuid}/calls/{call_id}/externalMedia:
     post:
-      summary: Create and external media channel to received the RTP
+      summary: Create and external media channel to send the RTP to external service
       description: '**Required ACL:** `calld.applications.{application_uuid}.calls.{call_id}.read`'
       parameters:
         - $ref: '#/parameters/ApplicationUUID'
