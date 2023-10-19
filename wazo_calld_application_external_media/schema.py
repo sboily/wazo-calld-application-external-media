@@ -9,7 +9,6 @@ from marshmallow.validate import Length
 
 
 class ExternalMediaSchema(Schema):
-    app = fields.Str(validate=Length(min=1))
     external_host = fields.Str(validate=Length(min=1))
     format = fields.Str(validate=Length(min=1))
 

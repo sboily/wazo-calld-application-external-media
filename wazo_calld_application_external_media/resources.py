@@ -19,6 +19,6 @@ class ExternalMediaResource(AuthResource):
     @required_acl('calld.applications.{application_uuid}.calls.{call_id}.read')
     def post(self, application_uuid, call_id):
         request_body = external_media_schema.load(request.get_json(force=True))
-        result = self._service.external_media(call_id, request_body)
+        result = self._service.external_media(application_uuid, call_id, request_body)
 
         return result, 204

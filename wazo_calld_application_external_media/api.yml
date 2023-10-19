@@ -20,9 +20,6 @@ definitions:
   ExternalMedia:
     type: object
     properties:
-      app:
-        description: Application
-        type: string
       external_host:
         description: External host
         type: string
