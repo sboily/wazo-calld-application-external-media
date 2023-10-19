@@ -9,7 +9,7 @@ class ExternalMediaService:
     def __init__(self, ari):
         self._ari = ari
 
-    def external_media(self, applcation_uuid, call_id, request):
+    def external_media(self, application_uuid, call_id, request):
         channel = self._ari.channels.get(channelId=call_id)
         request['app'] = f'wazo-app-{application_uuid}'
         return channel.externalMedia(**request)
