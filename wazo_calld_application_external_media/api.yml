@@ -1,42 +1,39 @@
 paths:
-  /applications/{application_uuid}/calls/{call_id}/continue:
-    put:
-      summary: Continue call into specific dialplan context/exten/priority
-      description: '**Required ACL:** `calld.applications.{application_uuid}.calls.{call_id}.update`'
+  /applications/{application_uuid}/calls/{call_id}/externalMedia:
+    post:
+      summary: Create and external media channel to received the RTP
+      description: '**Required ACL:** `calld.applications.{application_uuid}.calls.{call_id}.read`'
       parameters:
         - $ref: '#/parameters/ApplicationUUID'
         - $ref: '#/parameters/ApplicationCallID'
-        - $ref: '#/parameters/CallContinue'
+        - $ref: '#/parameters/ExternalMedia'
       tags:
       - applications
       responses:
         '204':
-          description: Call will continue in dialplan
+          description: External media created
           schema:
-            $ref: '#/definitions/CallContinue'
+            $ref: '#/definitions/ExternalMedia'
         '503':
           $ref: '#/responses/AnotherServiceUnavailable'
 definitions:
-  CallContinue:
+  ExternalMedia:
     type: object
     properties:
-      context:
-        description: Context
+      app:
+        description: Application
         type: string
-      extension:
-        description: Extension
+      external_host:
+        description: External host
         type: string
-      priority:
-        description: Priority
-        type: integer
-      label:
-        description: Label
+      format:
+        description: Format
         type: string
 parameters:
-  CallContinue:
+  ExternalMedia:
     name: body
     in: body
-    description: Parameters to continue call
+    description: Parameters to send call to an external media
     required: true
     schema:
-      $ref: '#/definitions/CallContinue'
+      $ref: '#/definitions/ExternalMedia'
